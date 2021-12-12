@@ -3,7 +3,7 @@ import sqlite3
 class User(object):
 
     tablename = "candidates"
-    dbpath = "../data/db.sqlite"
+    dbpath = "../../data/db2.sqlite"
 
     def __init__(self, email, hash, id=None, first=None, last=None, phone=None, description=None, location=None,\
                        headline=None, session=None, ethnicity_id=None, gender_id=None, pronoun_id=None):
@@ -51,5 +51,7 @@ class User(object):
                     FROM {cls.tablename}
                     WHERE {criteria} = ?"""
             cursor.execute(sql, (data,))
-        user =  cursor.fetchone()
-        return User(id=user[0], first=user[1], last=user[2], email=user[3], hash=user[8])
+        user = cursor.fetchone()
+        if user:
+            return User(id=user[0], first=user[1], last=user[2], email=user[3], hash=user[8])
+        return None
