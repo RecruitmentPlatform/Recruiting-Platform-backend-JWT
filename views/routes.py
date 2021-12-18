@@ -6,7 +6,7 @@ from models.user import User
 
 
 
-#curl -X POST http://127.0.0.1:5000/auth  -H "Content-Type: application/json" -d '{ "username": "test12@email.com", "password": "11111" }'
+#curl -X POST http://127.0.0.1:5000/auth  -H "Content-Type: application/json" -d '{ "username": "test1@email.com", "password": "11111" }'
 def authenticate(username, password):
     user = User.get("email", username)
     user_password = user.hash
@@ -27,7 +27,7 @@ app.config["SECRET_KEY"] = "super-secret"
 jwt = JWT(app, authenticate, identity)
 
 
-# curl -X POST http://127.0.0.1:5000/api/signup -d '{"first":"test", "last":"account", "password":"11111", "email":"test12@email.com"}' -H "Content-Type: application/json"
+# curl -X POST http://127.0.0.1:5000/api/signup -d '{"first":"test", "last":"account", "password":"11111", "email":"test1@email.com"}' -H "Content-Type: application/json"
 @app.route("/api/signup" , methods=["POST"])
 def signup():
     data = request.get_json()

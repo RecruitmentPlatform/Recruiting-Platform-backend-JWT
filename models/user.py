@@ -3,7 +3,7 @@ import sqlite3
 class User(object):
 
     tablename = "candidates"
-    dbpath = "../../backend/graphql/db.sqlite"
+    dbpath = "../../frontend/db/db.sqlite"
 
     def __init__(self, email, hash, id=None, first=None, last=None, phone=None, description=None, location=None,\
                        headline=None, session=None, ethnicity_id=None, gender_id=None, pronoun_id=None):
