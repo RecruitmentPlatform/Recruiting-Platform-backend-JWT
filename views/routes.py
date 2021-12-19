@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import generate_password_hash, check_password_hash
+# from flask_jwt_extended import get_jwt_identity
 from flask_cors import CORS
 from models.user import User
 
@@ -50,6 +51,8 @@ def signup():
 @app.route("/protected")
 @jwt_required()
 def protected():
+    # current_user = get_jwt_identity()
+    # return jsonify(logged_in_as=currecnt_user), 200
     return jsonify({"status":"success", "id":current_identity.id})
 
 
